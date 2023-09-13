@@ -50,9 +50,9 @@ public class ReqresStepDef {
 
     // Put update user
 
-    @Given("Put update user with valid id {int}")
-    public void putUpdateUserWithValidData(int id) {
-        File json = new File(Constants.REQ_BODY + "User.json");
+    @Given("Put update user with valid json {string} and user id {int}")
+    public void putUpdateUserWithValidData(String jsonFile, int id) {
+        File json = new File(Constants.REQ_BODY + jsonFile);
         reqresAPI.putUpdateUser(id, json);
     }
     
@@ -64,5 +64,22 @@ public class ReqresStepDef {
     @Then("Put update user status code should be {int} OK")
     public void putStatusCodeShouldBe(int ok) {
         SerenityRest.then().statusCode(ok);
+    }
+
+//    Delete User
+
+    @Given("Delete a user with valid user id {int}")
+    public void deleteAUserWithValidUserId(int id) {
+        reqresAPI.deleteUser(id);
+    }
+
+    @When("Send request delete user")
+    public void sendRequestDeleteUser() {
+        SerenityRest.when().delete(ReqresAPI.DELETE_USER);
+    }
+
+    @Then("Status code delete user should {int} No Content")
+    public void statusCodeDeleteUserShouldNoContent(int statusCode) {
+        SerenityRest.then().statusCode(statusCode);
     }
 }

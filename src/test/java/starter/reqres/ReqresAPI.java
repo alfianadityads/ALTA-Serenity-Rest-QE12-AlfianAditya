@@ -14,6 +14,7 @@ public class ReqresAPI {
     public static String PUT_UPDATE_USER = Constants.BASE_URL + "/api/users/{id}";
     public static String GET_SINGLE_USER = Constants.BASE_URL + "/api/users/{id}";
     public static String GET_INVALID_SINGLE_USER = Constants.BASE_URL+"/api/users/{firstName}";
+    public static String DELETE_USER = Constants.BASE_URL + "/api/users/{id}";
 
     // ============================================================================
 
@@ -48,5 +49,11 @@ public class ReqresAPI {
     public void getInvalidSingleUser(String firstName) {
         SerenityRest.given()
                 .pathParam(ReqresResponses.FIRST_NAME, firstName);
+    }
+
+//    Delete User
+    @Step("Delete a user")
+    public void deleteUser(int id) {
+        SerenityRest.given().pathParam(ReqresResponses.ID, id);
     }
 }
