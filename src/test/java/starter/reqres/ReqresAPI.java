@@ -15,6 +15,9 @@ public class ReqresAPI {
     public static String GET_SINGLE_USER = Constants.BASE_URL + "/api/users/{id}";
     public static String GET_INVALID_SINGLE_USER = Constants.BASE_URL+"/api/users/{firstName}";
     public static String DELETE_USER = Constants.BASE_URL + "/api/users/{id}";
+    public static String LOGIN_USER = Constants.BASE_URL+"/api/login";
+
+    public static String REGISTER_USER = Constants.BASE_URL + "/api/register";
 
     // ============================================================================
 
@@ -26,6 +29,13 @@ public class ReqresAPI {
 
     @Step("Post create new user")
     public void postCreateNewUser(File json) {
+        SerenityRest.given()
+                .contentType(ContentType.JSON)
+                .body(json);
+    }
+
+    @Step("Register new user")
+    public void postRegisterUser(File json) {
         SerenityRest.given()
                 .contentType(ContentType.JSON)
                 .body(json);

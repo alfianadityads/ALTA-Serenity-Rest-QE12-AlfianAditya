@@ -9,6 +9,7 @@ Feature: ALTA QE BATCH 12
       | 1    |
       | 2    |
 
+
   @Latihan
   Scenario: Post create a new user with valid json
     Given Create new user with valid json "User.json"

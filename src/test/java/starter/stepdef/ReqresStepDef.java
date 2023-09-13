@@ -30,24 +30,6 @@ public class ReqresStepDef {
         SerenityRest.then().statusCode(ok);
     }
 
-    // Create new user
-
-    @Given("Create new user with valid json {string}")
-    public void createNewUserWithValidJson(String jsonFile) {
-        File json = new File(Constants.REQ_BODY + jsonFile);
-        reqresAPI.postCreateNewUser(json);
-    }
-
-    @When("Send request post create new user")
-    public void sendRequestPostCreateNewUser() {
-        SerenityRest.when().post(ReqresAPI.POST_CREATE_USER);
-    }
-
-    @Then("Status code should be {int} Created")
-    public void statusCodeShouldBeCreated(int created) {
-        SerenityRest.then().statusCode(created);
-    }
-
     // Put update user
 
     @Given("Put update user with valid json {string} and user id {int}")
@@ -81,5 +63,23 @@ public class ReqresStepDef {
     @Then("Status code delete user should {int} No Content")
     public void statusCodeDeleteUserShouldNoContent(int statusCode) {
         SerenityRest.then().statusCode(statusCode);
+    }
+
+    // Create new user
+
+    @Given("Create new user with valid json {string}")
+    public void createNewUserWithValidJson(String jsonFile) {
+        File json = new File(Constants.REQ_BODY + jsonFile);
+        reqresAPI.postCreateNewUser(json);
+    }
+
+    @When("Send request post create new user")
+    public void sendRequestPostCreateNewUser() {
+        SerenityRest.when().post(ReqresAPI.POST_CREATE_USER);
+    }
+
+    @Then("Status code should be {int} Created")
+    public void statusCodeShouldBeCreated(int created) {
+        SerenityRest.then().statusCode(created);
     }
 }
