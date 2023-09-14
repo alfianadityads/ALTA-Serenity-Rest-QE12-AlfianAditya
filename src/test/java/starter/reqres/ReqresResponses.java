@@ -9,6 +9,9 @@ public class ReqresResponses {
 
     public static String JOB = "job";
 
+    public static String ERROR = "error";
+    public static String TOKEN = "token";
+
 //    untuk data array
     public static String DATA_ID_ARRAY = "data[0].id";
 
