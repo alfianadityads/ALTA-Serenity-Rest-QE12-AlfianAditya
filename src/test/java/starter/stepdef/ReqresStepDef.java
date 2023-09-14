@@ -1,14 +1,18 @@
 package starter.stepdef;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 import starter.reqres.ReqresAPI;
+import starter.reqres.ReqresResponses;
 import starter.utils.Constants;
 
 import java.io.File;
+import static org.hamcrest.Matchers.equalTo;
+import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class ReqresStepDef {
     @Steps
@@ -30,6 +34,17 @@ public class ReqresStepDef {
         SerenityRest.then().statusCode(ok);
     }
 
+    @And("Response body page should be {int}")
+    public void responseBodyPageShouldBe(int page) {
+        SerenityRest.and().body(ReqresResponses.PAGE, equalTo(page));
+    }
+
+    @And("Validate get list users JSON schema {string}")
+    public void validateGetListUsersJSONSchema(String jsonFile) {
+        File json = new File(Constants.JSON_SCHEMA+jsonFile);
+        SerenityRest.and().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
+
     // Put update user
 
     @Given("Put update user with valid json {string} and user id {int}")
@@ -47,6 +62,12 @@ public class ReqresStepDef {
     public void putStatusCodeShouldBe(int ok) {
         SerenityRest.then().statusCode(ok);
     }
+    @And("Validate put update user JSON schema {string}")
+    public void validatePutUpdateUserJSONSchema(String jsonFile) {
+        File json = new File(Constants.JSON_SCHEMA + jsonFile);
+        SerenityRest.and().assertThat().body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
+
 
 //    Delete User
 
@@ -82,4 +103,21 @@ public class ReqresStepDef {
     public void statusCodeShouldBeCreated(int created) {
         SerenityRest.then().statusCode(created);
     }
+
+    @And("Response body name was {string} and job was {string}")
+    public void responseBodyNameWasAndJobWas(String name, String job) {
+        SerenityRest.and()
+                .body(ReqresResponses.NAME, equalTo(name))
+                .body(ReqresResponses.JOB, equalTo(job));
+    }
+
+    @And("Validate post create new user JSON Schema {string}")
+    public void validatePostCreateNewUserJSONSchema(String jsonFile) {
+        File json = new File(Constants.JSON_SCHEMA+jsonFile);
+        SerenityRest.and()
+                .assertThat()
+                .body(JsonSchemaValidator.matchesJsonSchema(json));
+    }
+
+
 }

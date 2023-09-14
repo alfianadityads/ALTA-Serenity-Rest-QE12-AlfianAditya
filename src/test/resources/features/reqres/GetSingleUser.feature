@@ -1,5 +1,6 @@
 Feature: Get Single User
-    @Tugas: @Positive-Case
+    @Tugas
+      @Positive-Case
     Scenario Outline: Get single user with valid parameter id
       Given Get single user with valid id <id>
       When Send request valid id get single user
@@ -9,7 +10,8 @@ Feature: Get Single User
         | 1  |
         | 2  |
 
-    @Tugas: @Negative-Case
+    @Tugas
+      @Negative-Case
     Scenario Outline: Get single user with exceed id
       Given Get single user with exceed id <id>
       When Send request exceed id get single user
@@ -19,7 +21,8 @@ Feature: Get Single User
         | 301 |
         | 452 |
 
-    @Tugas: @Negative-Case
+    @Tugas
+      @Negative-Case
     Scenario Outline: Get single user with invalid parameter
       Given Get single user with first name "<firstName>"
       When Send request invalid parameter get single user
