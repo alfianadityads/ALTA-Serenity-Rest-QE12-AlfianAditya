@@ -62,8 +62,16 @@ public class ReqresAPI {
     }
 
 //    Delete User
+
     @Step("Delete a user")
     public void deleteUser(int id) {
         SerenityRest.given().pathParam(ReqresResponses.ID, id);
+    }
+
+    @Step("Post login user")
+    public void postLoginUser(File json) {
+        SerenityRest.given()
+                .contentType(ContentType.JSON)
+                .body(json);
     }
 }
