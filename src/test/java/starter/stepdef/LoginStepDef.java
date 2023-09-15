@@ -19,7 +19,7 @@ public class LoginStepDef {
     @Steps
     ReqresAPI reqresAPI;
 
-//    Postive case
+//    Positive case
     @Given("User login with valid email and password {string}")
     public void userLoginWithValidEmailAndPassword(String jsonFile) {
         File json = new File(Constants.REQ_BODY + jsonFile);
