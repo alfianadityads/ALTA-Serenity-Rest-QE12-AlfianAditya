@@ -19,6 +19,7 @@ public class ReqresAPI {
 
     public static String REGISTER_USER = Constants.BASE_URL + "/api/register";
     public static  String GET_SINGLE_RESOURCE = Constants.BASE_URL + "/api/unknown/{id}";
+    public static String PATCH_UPDATE_USER = Constants.BASE_URL + "/api/users/{id}";
 
     // ============================================================================
 
@@ -81,4 +82,10 @@ public class ReqresAPI {
         SerenityRest.given()
                 .pathParam(ReqresResponses.ID, id);
     }
+
+    @Step("Patch Update User")
+    public void patchUpdateUser(int id) {
+        SerenityRest.given().pathParam(ReqresResponses.ID, id);
+    }
+
 }
