@@ -34,9 +34,9 @@ public class RegisterStepDef {
         SerenityRest.when().post(ReqresAPI.REGISTER_USER);
     }
 
-    @Then("Status code register should be {int} Created")
-    public void statusCodeShouldBeCreated(int created) {
-        SerenityRest.then().statusCode(created);
+    @Then("Status code register should be {int} OK")
+    public void statusCodeShouldBeCreated(int statusCode) {
+        SerenityRest.then().statusCode(statusCode);
     }
     @And("Responses body id was {int} and token was {string}")
     public void responsesBodyIdWasAndTokenWas(int id, String token) {

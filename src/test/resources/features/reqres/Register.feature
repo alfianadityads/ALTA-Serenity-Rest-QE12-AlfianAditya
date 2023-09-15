@@ -4,7 +4,7 @@ Feature: Post Register User
     Scenario Outline: Post register with valid json
         Given Register new user with valid json "RegisterUser.json"
         When Send request post register user
-        Then Status code register should be 201 Created
+        Then Status code register should be 200 OK
         And Responses body id was <id> and token was "<token>"
         And Validate post register users JSON schema "RegisterValidUserSchema.json"
         Examples:
