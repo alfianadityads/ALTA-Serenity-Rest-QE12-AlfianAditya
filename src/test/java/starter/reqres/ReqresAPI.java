@@ -13,12 +13,12 @@ public class ReqresAPI {
     public static String POST_CREATE_USER = Constants.BASE_URL + "/api/users";
     public static String PUT_UPDATE_USER = Constants.BASE_URL + "/api/users/{id}";
     public static String GET_SINGLE_USER = Constants.BASE_URL + "/api/users/{id}";
-    public static String GET_INVALID_SINGLE_USER = Constants.BASE_URL+"/api/users/{firstName}";
+    public static String GET_INVALID_SINGLE_USER = Constants.BASE_URL + "/api/users/{firstName}";
     public static String DELETE_USER = Constants.BASE_URL + "/api/users/{id}";
-    public static String LOGIN_USER = Constants.BASE_URL+"/api/login";
+    public static String LOGIN_USER = Constants.BASE_URL + "/api/login";
 
     public static String REGISTER_USER = Constants.BASE_URL + "/api/register";
-    public static  String GET_SINGLE_RESOURCE = Constants.BASE_URL + "/api/unknown/{id}";
+    public static String GET_SINGLE_RESOURCE = Constants.BASE_URL + "/api/unknown/{id}";
     public static String PATCH_UPDATE_USER = Constants.BASE_URL + "/api/users/{id}";
 
     // ============================================================================
@@ -63,11 +63,17 @@ public class ReqresAPI {
                 .pathParam(ReqresResponses.FIRST_NAME, firstName);
     }
 
-//    Delete User
+    // Delete User
 
     @Step("Delete a user")
     public void deleteUser(int id) {
         SerenityRest.given().pathParam(ReqresResponses.ID, id);
+    }
+
+    @Step("Delete invalid user")
+    public void deleteInvalidUser(String id) {
+        SerenityRest.given()
+                .pathParam(ReqresResponses.ID, id);
     }
 
     @Step("Post login user")
